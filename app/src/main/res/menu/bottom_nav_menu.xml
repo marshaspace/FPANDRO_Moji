@@ -3,9 +3,13 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="Home"/>
+    <item
+        android:id="@+id/moodPickerFragment"
+        android:icon="@drawable/ic_pencil"
+        android:title="Write"/>
     <item
         android:id="@+id/historyFragment"
         android:icon="@drawable/ic_archive"
-        android:title="History" />
+        android:title="History"/>
 </menu>

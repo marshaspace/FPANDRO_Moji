@@ -114,7 +114,7 @@ class JournalFragment : Fragment() {
         // Set karakter mood
         binding.imgMoodBg.setImageResource(currentMood.character)
 
-        binding.btnBack.setOnClickListener {
+        binding.topAppBar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
@@ -167,7 +167,11 @@ class JournalFragment : Fragment() {
         val content = binding.etJournal.text.toString().trim()
 
         if (content.isEmpty()) {
-            Toast.makeText(requireContext(), "Tulis dulu yuk!", Toast.LENGTH_SHORT).show()
+            com.google.android.material.snackbar.Snackbar.make(
+                binding.root,
+                "Tulis dulu yuk!",
+                com.google.android.material.snackbar.Snackbar.LENGTH_SHORT
+            ).show()
             return
         }
 
@@ -184,7 +188,13 @@ class JournalFragment : Fragment() {
         )
 
         DummyData.entries.add(0, newEntry)
-        Toast.makeText(requireContext(), "Jurnal tersimpan! 🎉", Toast.LENGTH_SHORT).show()
+
+        com.google.android.material.snackbar.Snackbar.make(
+            binding.root,
+            "Jurnal tersimpan! 🎉",
+            com.google.android.material.snackbar.Snackbar.LENGTH_SHORT
+        ).show()
+
         findNavController().navigateUp()
     }
 

@@ -1,6 +1,7 @@
 package com.moji.v1.ui.main
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -22,8 +23,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNav.setupWithNavController(navController)
 
-        binding.fab.setOnClickListener {
-            navController.navigate(R.id.moodPickerFragment)
+        // Sembunyikan bottom nav di halaman journal saja
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.journalFragment -> {
+                    binding.bottomNav.visibility = View.GONE
+                }
+                else -> {
+                    binding.bottomNav.visibility = View.VISIBLE
+                }
+            }
         }
     }
 }

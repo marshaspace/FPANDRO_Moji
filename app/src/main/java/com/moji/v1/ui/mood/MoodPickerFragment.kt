@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -30,17 +29,35 @@ class MoodPickerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnBack.setOnClickListener {
+        // TopAppBar back button
+        binding.topAppBar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
         val adapter = MoodAdapter(Mood.values().toList()) { mood ->
-            val bundle = bundleOf("selectedMood" to mood.name)
-            findNavController().navigate(R.id.journalFragment, bundle)
+            // Safe Args — kirim mood ke JournalFragment
+            val bundle = android.os.Bundle().apply {
+                putString("selectedMood", mood.name)
+            }
+            findNavController().navigate(
+                R.id.action_moodPicker_to_journal,
+                bundle
+            )
         }
 
-        binding.rvMoodPicker.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvMoodPicker.layoutManager = GridLayoutManager(requireContext(), 2).apply {
+            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    val totalItems = Mood.values().size
+                    return if (totalItems % 2 != 0 && position == totalItems - 1) 2 else 1
+                }
+            }
+        }
         binding.rvMoodPicker.adapter = adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     override fun onDestroyView() {

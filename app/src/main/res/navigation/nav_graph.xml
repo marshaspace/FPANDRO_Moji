@@ -7,17 +7,21 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.moji.v1.ui.home.HomeFragment"
-        android:label="Home" />
+        android:label="Home"/>
 
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.moji.v1.ui.history.HistoryFragment"
-        android:label="History" />
+        android:label="History"/>
 
     <fragment
         android:id="@+id/moodPickerFragment"
         android:name="com.moji.v1.ui.mood.MoodPickerFragment"
-        android:label="Pick Mood" />
+        android:label="Pick Mood">
+        <action
+            android:id="@+id/action_moodPicker_to_journal"
+            app:destination="@id/journalFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/journalFragment"
@@ -25,7 +29,7 @@
         android:label="Write it Out">
         <argument
             android:name="selectedMood"
-            app:argType="string" />
+            app:argType="string"/>
     </fragment>
 
 </navigation>

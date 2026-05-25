@@ -30,20 +30,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:itemActiveIndicatorStyle="@style/Widget.Material3.BottomNavigationView"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="Write journal"
-        android:layout_marginBottom="-28dp"
-        app:backgroundTint="#3D7EF5"
-        app:srcCompat="@drawable/ic_pencil"
-        app:tint="@color/white"
-        app:fabSize="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNav"/>
+        app:itemActiveIndicatorStyle="@android:style/Widget.DeviceDefault"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,11 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Moji" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <style name="Theme.Moji" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">#1A1A1A</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:windowBackground">@color/milkwhite_base</item>
     </style>
 
-    <style name="Theme.Moji" parent="Base.Theme.Moji" />
+    <style name="Theme.Moji.Splash" parent="Theme.Moji">
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>
